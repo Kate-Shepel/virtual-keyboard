@@ -20,7 +20,7 @@ let caps = false;
 let shift = false;
 
 const KEYS = {
-  // SymbolOptions: ['Eng', 'Eng + Caps', 'Eng + Shift', 'Rus', 'Rus + Caps', 'Rus + Shift']
+  // keyCode: ['Eng', 'Eng + Caps', 'Eng + Shift', 'Rus', 'Rus + Caps', 'Rus + Shift']
   Backquote: ['`', '`', '~', 'ё', 'Ё', 'Ё'],
   Number1: ['1', '1', '!', '1', '1', '!'],
   Number2: ['2', '2', '@', '2', '2', '"'],
@@ -94,3 +94,53 @@ const KEYBOARD_LAYOUT = [
   ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight'],
   ['CtrlLeft', 'Win', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'CtrlRight']
 ];
+
+function getKeyChar(keyCode) {
+  const keyData = KEYS[keyCode];
+  if (!keyData) return '';
+
+  if (lang === 'eng') {
+    if (caps && !shift) return keyData[1];
+    if (!caps && shift) return keyData[2];
+  } else if (lang === 'rus') {
+    if (caps && !shift) return keyData[4];
+    if (!caps && shift) return keyData[5];
+  }
+
+  return keyData[0];
+}
+
+KEYBOARD_LAYOUT.forEach(row => {
+  const rowElement = document.createElement('div');
+  rowElement.classList.add('row');
+
+  row.forEach(keyCode => {
+    const keyElement = document.createElement('button');
+    keyElement.textContent = getKeyChar(keyCode);
+    keyElement.classList.add('key');
+    keyElement.dataset.key = keyCode;
+
+    keyElement.addEventListener('click', () => {
+      switch (keyCode) {
+        case 'Backspace':
+          inputField.value = inputField.value.slice(0, -1);
+          break;
+        case 'Space':
+          inputField.value += ' ';
+          break;
+        case 'Enter':
+          inputField.value += '\n';
+          break;
+        case 'Tab':
+          inputField.value += '    ';
+          break;
+        default:
+          inputField.value += getKeyChar(keyCode);
+      }
+    });
+
+    rowElement.appendChild(keyElement);
+  });
+
+  keyboard.appendChild(rowElement);
+});
