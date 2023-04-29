@@ -1,18 +1,18 @@
 const heading = document.createElement('h1');
 heading.innerHTML = 'Virtual Keyboard';
-heading.classList.add("heading");
+heading.classList.add('heading');
 document.body.append(heading);
 const introInfo = document.createElement('p');
 introInfo.innerHTML = 'The Virtual Keyboard was created in Windows operating system. <br> Please use LeftCtrl for language switch.';
-introInfo.classList.add("intro-info");
+introInfo.classList.add('intro-info');
 document.body.append(introInfo);
 const inputField = document.createElement('textarea');
 inputField.id = 'inputField';
-inputField.classList.add("input-field");
+inputField.classList.add('input-field');
 document.body.appendChild(inputField);
 const keyboard = document.createElement('div');
 keyboard.id = 'keyboard';
-keyboard.classList.add("keyboard");
+keyboard.classList.add('keyboard');
 document.body.appendChild(keyboard);
 
 let lang = localStorage.getItem('lang') || 'eng';
@@ -20,7 +20,7 @@ let caps = false;
 let shift = false;
 
 const KEYS = {
-  // SymbolOptions: ['English', 'English with Caps', 'English with Shift', 'Russian', 'Russian with Caps', 'Russian with Shift']
+  // SymbolOptions: ['Eng', 'Eng + Caps', 'Eng + Shift', 'Rus', 'Rus + Caps', 'Rus + Shift']
   Backquote: ['`', '`', '~', 'ё', 'Ё', 'Ё'],
   Number1: ['1', '1', '!', '1', '1', '!'],
   Number2: ['2', '2', '@', '2', '2', '"'],
@@ -84,7 +84,7 @@ const KEYS = {
   ArrowDown: ['↓', '↓', '↓', '↓', '↓', '↓'],
   ArrowLeft: ['←', '←', '←', '←', '←', '←'],
   Semicolon: [';', ';', ':', 'ж', 'Ж', 'Ж'],
-  Quote: ['\'', '\'', '"', 'э', 'Э', 'Э'],
+  Quote: ['\'', '\'', '"', 'э', 'Э', 'Э']
 };
 
 const KEYBOARD_LAYOUT = [
@@ -92,5 +92,5 @@ const KEYBOARD_LAYOUT = [
   ['Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Del'],
   ['Caps', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter'],
   ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight'],
-  ['CtrlLeft', 'Win', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'CtrlRight'],
+  ['CtrlLeft', 'Win', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'CtrlRight']
 ];
