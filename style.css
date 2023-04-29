@@ -75,3 +75,30 @@
 .key_pressed {
   background-color: #547e5c;
 }
+
+.key[data-key="Space"] {
+  flex: 9.5;
+}
+
+.key[data-key="ShiftLeft"],
+.key[data-key="ShiftRight"] {
+  flex: 2;
+}
+
+.key[data-key="Caps"],
+.key[data-key="Enter"] {
+  flex: 2;
+}
+.key[data-key="Backspace"] {
+  flex: 1.5;
+}
+
+.key[data-key="ControlLeft"],
+.key[data-key="ControlRight"] {
+  flex: 1.4;
+}
+
+.key[data-key="ShiftLeft"],
+.key[data-key="ShiftRight"] {
+  flex: 2;
+}
