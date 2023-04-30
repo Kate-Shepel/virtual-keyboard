@@ -74,6 +74,7 @@
 
 .key_pressed {
   background-color: #547e5c;
+  transform: scale(0.93);
 }
 
 .key[data-key="Space"] {
