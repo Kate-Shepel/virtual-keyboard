@@ -112,12 +112,6 @@ function getKeyChar(keyCode) {
   return keyData[0];
 }
 
-function updateKeyTextContent(key, text) {
-  const keyCopy = key.cloneNode(true);
-  keyCopy.textContent = text;
-  key.parentNode.replaceChild(keyCopy, key);
-}
-
 function updateKeys() {
   const keys = document.querySelectorAll('.key');
   keys.forEach((key) => {
@@ -146,8 +140,8 @@ function updateKeys() {
     } else {
       text = keyData[3];
     }
-    // to avoid no-param-reassign ESLint error instead of key.textContent = text
-    updateKeyTextContent(key, text);
+
+    key.textContent = text;
   });
 }
 
