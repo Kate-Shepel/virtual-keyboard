@@ -112,6 +112,12 @@ function getKeyChar(keyCode) {
   return keyData[0];
 }
 
+function updateKeyTextContent(key, text) {
+  const keyCopy = key.cloneNode(true);
+  keyCopy.textContent = text;
+  key.parentNode.replaceChild(keyCopy, key);
+}
+
 function updateKeys() {
   const keys = document.querySelectorAll('.key');
   keys.forEach((key) => {
@@ -135,15 +141,13 @@ function updateKeys() {
       } else {
         text = keyData[4];
       }
+    } else if (lang === 'eng') {
+      text = keyData[0];
     } else {
-      if (lang === 'eng') {
-        text = keyData[0];
-      } else {
-        text = keyData[3];
-      }
+      text = keyData[3];
     }
-
-    key.textContent = text;
+    // to avoid no-param-reassign ESLint error instead of key.textContent = text
+    updateKeyTextContent(key, text);
   });
 }
 
@@ -168,9 +172,11 @@ KEYBOARD_LAYOUT.forEach(row => {
         case 'CtrlLeft':
           keyElement.classList.add('key_pressed');
           break;
+        default:
+          break;
       }
     });
-    
+
     keyElement.addEventListener('mouseup', () => {
       switch (keyCode) {
         case 'ShiftLeft':
@@ -184,6 +190,8 @@ KEYBOARD_LAYOUT.forEach(row => {
           localStorage.setItem('lang', lang);
           updateKeys();
           keyElement.classList.remove('key_pressed');
+          break;
+        default:
           break;
       }
     });
