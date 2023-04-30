@@ -22,17 +22,17 @@ let shift = false;
 const KEYS = {
   // keyCode: ['En', 'En+Caps', 'En+Sft', 'Ru', 'Ru+Caps', 'Ru+Sft', 'En+Caps+Sft', 'Ru+Caps+Sft' ]
   Backquote: ['`', '`', '~', 'ё', 'Ё', 'Ё', '~', 'ё'],
-  Number1: ['1', '1', '!', '1', '1', '!', '!', '!'],
-  Number2: ['2', '2', '@', '2', '2', '"', '@', '"'],
-  Number3: ['3', '3', '#', '3', '3', '№', '#', '№'],
-  Number4: ['4', '4', '$', '4', '4', ';', '$', ';'],
-  Number5: ['5', '5', '%', '5', '5', '%', '%', '%'],
-  Number6: ['6', '6', '^', '6', '6', ':', '^', ':'],
-  Number7: ['7', '7', '&', '7', '7', '?', '&', '?'],
-  Number8: ['8', '8', '*', '8', '8', '*', '*', '*'],
-  Number9: ['9', '9', '(', '9', '9', '(', '(', '('],
-  Number0: ['0', '0', ')', '0', '0', ')', ')', ')'],
-  Hyphen: ['-', '-', '_', '-', '-', '_', '_', '_'],
+  Digit1: ['1', '1', '!', '1', '1', '!', '!', '!'],
+  Digit2: ['2', '2', '@', '2', '2', '"', '@', '"'],
+  Digit3: ['3', '3', '#', '3', '3', '№', '#', '№'],
+  Digit4: ['4', '4', '$', '4', '4', ';', '$', ';'],
+  Digit5: ['5', '5', '%', '5', '5', '%', '%', '%'],
+  Digit6: ['6', '6', '^', '6', '6', ':', '^', ':'],
+  Digit7: ['7', '7', '&', '7', '7', '?', '&', '?'],
+  Digit8: ['8', '8', '*', '8', '8', '*', '*', '*'],
+  Digit9: ['9', '9', '(', '9', '9', '(', '(', '('],
+  Digit0: ['0', '0', ')', '0', '0', ')', ')', ')'],
+  Minus: ['-', '-', '_', '-', '-', '_', '_', '_'],
   Equal: ['=', '=', '+', '=', '=', '+', '+', '+'],
   Tab: ['Tab', 'Tab', 'Tab', 'Tab', 'Tab', 'Tab', 'Tab', 'Tab'],
   KeyA: ['a', 'A', 'A', 'ф', 'Ф', 'Ф', 'a', 'ф'],
@@ -64,18 +64,18 @@ const KEYS = {
   BracketLeft: ['[', '[', '{', 'х', 'Х', 'Х', '{', 'х'],
   BracketRight: [']', ']', '}', 'ъ', 'Ъ', 'Ъ', '}', 'ъ'],
   Backslash: ['\\', '\\', '|', '\\', '\\', '/', '|', '/'],
-  Del: ['Del', 'Del', 'Del', 'Del', 'Del', 'Del', 'Del', 'Del'],
+  Delete: ['Del', 'Del', 'Del', 'Del', 'Del', 'Del', 'Del', 'Del'],
   Comma: [',', ',', '<', 'б', 'Б', 'Б', '<', 'б'],
   Period: ['.', '.', '>', 'ю', 'Ю', 'Ю', '>', 'ю'],
   Slash: ['/', '/', '?', '.', '.', ',', '?', ','],
   Backspace: ['Backspace', 'Backspace', 'Backspace', 'Backspace', 'Backspace', 'Backspace', 'Backspace', 'Backspace'],
   Enter: ['Enter', 'Enter', 'Enter', 'Enter', 'Enter', 'Enter', 'Enter', 'Enter'],
-  Caps: ['Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock'],
+  CapsLock: ['Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock'],
   ShiftLeft: ['Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift'],
   ShiftRight: ['Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift'],
-  CtrlLeft: ['Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl'],
-  CtrlRight: ['Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl'],
-  Win: ['Win', 'Win', 'Win', 'Win', 'Win', 'Win', 'Win', 'Win'],
+  ControlLeft: ['Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl'],
+  ControlRight: ['Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl'],
+  MetaLeft: ['Win', 'Win', 'Win', 'Win', 'Win', 'Win', 'Win', 'Win'],
   AltLeft: ['Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt'],
   AltRight: ['Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt'],
   Space: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
@@ -88,11 +88,11 @@ const KEYS = {
 };
 
 const KEYBOARD_LAYOUT = [
-  ['Backquote', 'Number1', 'Number2', 'Number3', 'Number4', 'Number5', 'Number6', 'Number7', 'Number8', 'Number9', 'Number0', 'Hyphen', 'Equal', 'Backspace'],
-  ['Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Del'],
-  ['Caps', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter'],
+  ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace'],
+  ['Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete'],
+  ['CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter'],
   ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight'],
-  ['CtrlLeft', 'Win', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'CtrlRight']
+  ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight']
 ];
 
 function getKeyChar(keyCode) {
@@ -163,7 +163,7 @@ KEYBOARD_LAYOUT.forEach(row => {
           updateKeys();
           keyElement.classList.add('key_pressed');
           break;
-        case 'CtrlLeft':
+        case 'ControlLeft':
           keyElement.classList.add('key_pressed');
           break;
         default:
@@ -179,7 +179,7 @@ KEYBOARD_LAYOUT.forEach(row => {
           updateKeys();
           keyElement.classList.remove('key_pressed');
           break;
-        case 'CtrlLeft':
+        case 'ControlLeft':
           lang = lang === 'eng' ? 'rus' : 'eng';
           localStorage.setItem('lang', lang);
           updateKeys();
@@ -204,7 +204,7 @@ KEYBOARD_LAYOUT.forEach(row => {
         case 'Tab':
           inputField.value += '    ';
           break;
-        case 'Caps':
+        case 'CapsLock':
           caps = !caps;
           updateKeys();
           if (caps) keyElement.classList.add('key_pressed');
@@ -214,11 +214,11 @@ KEYBOARD_LAYOUT.forEach(row => {
           break;
         case 'ShiftRight':
           break;
-        case 'CtrlLeft':
+        case 'ControlLeft':
           break;
-        case 'Win':
+        case 'MetaLeft':
           break;
-        case 'CtrlRight':
+        case 'ControlRight':
           break;
         case 'AltLeft':
           break;
@@ -236,3 +236,70 @@ KEYBOARD_LAYOUT.forEach(row => {
 });
 
 updateKeys();
+
+// For real keyboard
+document.addEventListener('keydown', (event) => {
+  const key = document.querySelector(`.key[data-key="${event.code}"]`);
+  if (key) {
+    if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+      shift = true;
+      updateKeys();
+    // } else if (event.code === 'CapsLock') {
+    //   caps = !caps;
+    //   updateKeys();
+    //   key.classList.toggle('key_pressed');
+    } else if (event.code === 'ControlLeft') {
+      lang = lang === 'eng' ? 'rus' : 'eng';
+      localStorage.setItem('lang', lang);
+      updateKeys();
+    }
+    key.classList.add('key_pressed');
+  }
+});
+
+document.addEventListener('keyup', (event) => {
+  const key = document.querySelector(`.key[data-key="${event.code}"]`);
+  if (key) {
+    if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+      shift = false;
+      updateKeys();
+    }
+    if (event.code !== 'CapsLock' && event.code !== 'ControlLeft') {
+      key.classList.remove('key_pressed');
+    }
+  }
+});
+
+// separately for CapsLock case
+function handleKeyDown(event) {
+  const keyCode = event.code;
+  const keyElement = document.querySelector(`.key[data-key="${keyCode}"]`);
+
+  if (keyElement) {
+    switch (keyCode) {
+      case 'CapsLock':
+        caps = !caps;
+        updateKeys();
+        if (caps) {
+          keyElement.classList.add('key_pressed');
+        } else {
+          keyElement.classList.remove('key_pressed');
+        }
+        break;
+      default:
+        keyElement.classList.add('key_pressed');
+    }
+  }
+}
+
+function handleKeyUp(event) {
+  const keyCode = event.code;
+  const keyElement = document.querySelector(`.key[data-key="${keyCode}"]`);
+
+  if (keyElement && keyCode !== 'CapsLock') {
+    keyElement.classList.remove('key_pressed');
+  }
+}
+
+document.addEventListener('keydown', handleKeyDown);
+document.addEventListener('keyup', handleKeyUp);

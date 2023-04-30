@@ -86,7 +86,7 @@
   flex: 2;
 }
 
-.key[data-key="Caps"],
+.key[data-key="CapsLock"],
 .key[data-key="Enter"] {
   flex: 2;
 }
