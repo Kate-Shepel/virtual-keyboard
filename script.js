@@ -21,70 +21,70 @@ let shift = false;
 
 const KEYS = {
   // keyCode: ['En', 'En+Caps', 'En+Sft', 'Ru', 'Ru+Caps', 'Ru+Sft', 'En+Caps+Sft', 'Ru+Caps+Sft' ]
-  Backquote: ['`', '`', '~', 'ё', 'Ё', 'Ё', '~'],
-  Number1: ['1', '1', '!', '1', '1', '!', '!'],
-  Number2: ['2', '2', '@', '2', '2', '"', '@'],
-  Number3: ['3', '3', '#', '3', '3', '№', '#'],
-  Number4: ['4', '4', '$', '4', '4', ';', '$'],
-  Number5: ['5', '5', '%', '5', '5', '%', '%'],
-  Number6: ['6', '6', '^', '6', '6', ':', '^'],
-  Number7: ['7', '7', '&', '7', '7', '?', '&'],
-  Number8: ['8', '8', '*', '8', '8', '*', '*'],
-  Number9: ['9', '9', '(', '9', '9', '(', '('],
-  Number0: ['0', '0', ')', '0', '0', ')', ')'],
-  Hyphen: ['-', '-', '_', '-', '-', '_', '_'],
-  Equal: ['=', '=', '+', '=', '=', '+', '+'],
-  Tab: ['Tab', 'Tab', 'Tab', 'Tab', 'Tab', 'Tab', 'Tab'],
-  KeyA: ['a', 'A', 'A', 'ф', 'Ф', 'Ф', 'a'],
-  KeyB: ['b', 'B', 'B', 'и', 'И', 'И', 'b'],
-  KeyC: ['c', 'C', 'C', 'с', 'С', 'С', 'c'],
-  KeyD: ['d', 'D', 'D', 'в', 'В', 'В', 'd'],
-  KeyE: ['e', 'E', 'E', 'у', 'У', 'У', 'e'],
-  KeyF: ['f', 'F', 'F', 'а', 'А', 'А', 'f'],
-  KeyG: ['g', 'G', 'G', 'п', 'П', 'П', 'g'],
-  KeyH: ['h', 'H', 'H', 'р', 'Р', 'Р', 'h'],
-  KeyI: ['i', 'I', 'I', 'ш', 'Ш', 'Ш', 'i'],
-  KeyJ: ['j', 'J', 'J', 'о', 'О', 'О', 'j'],
-  KeyK: ['k', 'K', 'K', 'л', 'Л', 'Л', 'k'],
-  KeyL: ['l', 'L', 'L', 'д', 'Д', 'Д', 'l'],
-  KeyM: ['m', 'M', 'M', 'ь', 'Ь', 'Ь', 'm'],
-  KeyN: ['n', 'N', 'N', 'т', 'Т', 'Т', 'n'],
-  KeyO: ['o', 'O', 'O', 'щ', 'Щ', 'Щ', 'o'],
-  KeyP: ['p', 'P', 'P', 'з', 'З', 'З', 'p'],
-  KeyQ: ['q', 'Q', 'Q', 'й', 'Й', 'Й', 'q'],
-  KeyR: ['r', 'R', 'R', 'к', 'К', 'К', 'r'],
-  KeyS: ['s', 'S', 'S', 'ы', 'Ы', 'Ы', 's'],
-  KeyT: ['t', 'T', 'T', 'е', 'Е', 'Е', 't'],
-  KeyU: ['u', 'U', 'U', 'г', 'Г', 'Г', 'u'],
-  KeyV: ['v', 'V', 'V', 'м', 'М', 'М', 'v'],
-  KeyW: ['w', 'W', 'W', 'ц', 'Ц', 'Ц', 'w'],
-  KeyX: ['x', 'X', 'X', 'ч', 'Ч', 'Ч', 'x'],
-  KeyY: ['y', 'Y', 'Y', 'н', 'Н', 'Н', 'y'],
-  KeyZ: ['z', 'Z', 'Z', 'я', 'Я', 'Я', 'z'],
-  BracketLeft: ['[', '[', '{', 'х', 'Х', 'Х', '{'],
-  BracketRight: [']', ']', '}', 'ъ', 'Ъ', 'Ъ', '}'],
-  Backslash: ['\\', '\\', '|', '\\', '\\', '/', '|'],
-  Del: ['Del', 'Del', 'Del', 'Del', 'Del', 'Del', 'Del'],
-  Comma: [',', ',', '<', 'б', 'Б', 'Б', '<'],
-  Period: ['.', '.', '>', 'ю', 'Ю', 'Ю', '>'],
-  Slash: ['/', '/', '?', '.', '.', ',', '?'],
-  Backspace: ['Backspace', 'Backspace', 'Backspace', 'Backspace', 'Backspace', 'Backspace', 'Backspace'],
-  Enter: ['Enter', 'Enter', 'Enter', 'Enter', 'Enter', 'Enter', 'Enter'],
-  Caps: ['Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock'],
-  ShiftLeft: ['Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift'],
-  ShiftRight: ['Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift'],
-  CtrlLeft: ['Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl'],
-  CtrlRight: ['Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl'],
-  Win: ['Win', 'Win', 'Win', 'Win', 'Win', 'Win', 'Win'],
-  AltLeft: ['Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt'],
-  AltRight: ['Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt'],
-  Space: [' ', ' ', ' ', ' ', ' ', ' ', ' '],
-  ArrowUp: ['▲', '▲', '▲', '▲', '▲', '▲', '▲'],
-  ArrowRight: ['►', '►', '►', '►', '►', '►', '►'],
-  ArrowDown: ['▼', '▼', '▼', '▼', '▼', '▼', '▼'],
-  ArrowLeft: ['◄', '◄', '◄', '◄', '◄', '◄', '◄'],
-  Semicolon: [';', ';', ':', 'ж', 'Ж', 'Ж', ':'],
-  Quote: ['\'', '\'', '"', 'э', 'Э', 'Э', '"']
+  Backquote: ['`', '`', '~', 'ё', 'Ё', 'Ё', '~', 'ё'],
+  Number1: ['1', '1', '!', '1', '1', '!', '!', '!'],
+  Number2: ['2', '2', '@', '2', '2', '"', '@', '"'],
+  Number3: ['3', '3', '#', '3', '3', '№', '#', '№'],
+  Number4: ['4', '4', '$', '4', '4', ';', '$', ';'],
+  Number5: ['5', '5', '%', '5', '5', '%', '%', '%'],
+  Number6: ['6', '6', '^', '6', '6', ':', '^', ':'],
+  Number7: ['7', '7', '&', '7', '7', '?', '&', '?'],
+  Number8: ['8', '8', '*', '8', '8', '*', '*', '*'],
+  Number9: ['9', '9', '(', '9', '9', '(', '(', '('],
+  Number0: ['0', '0', ')', '0', '0', ')', ')', ')'],
+  Hyphen: ['-', '-', '_', '-', '-', '_', '_', '_'],
+  Equal: ['=', '=', '+', '=', '=', '+', '+', '+'],
+  Tab: ['Tab', 'Tab', 'Tab', 'Tab', 'Tab', 'Tab', 'Tab', 'Tab'],
+  KeyA: ['a', 'A', 'A', 'ф', 'Ф', 'Ф', 'a', 'ф'],
+  KeyB: ['b', 'B', 'B', 'и', 'И', 'И', 'b', 'и'],
+  KeyC: ['c', 'C', 'C', 'с', 'С', 'С', 'c', 'с'],
+  KeyD: ['d', 'D', 'D', 'в', 'В', 'В', 'd', 'в'],
+  KeyE: ['e', 'E', 'E', 'у', 'У', 'У', 'e', 'у'],
+  KeyF: ['f', 'F', 'F', 'а', 'А', 'А', 'f', 'а'],
+  KeyG: ['g', 'G', 'G', 'п', 'П', 'П', 'g', 'п'],
+  KeyH: ['h', 'H', 'H', 'р', 'Р', 'Р', 'h', 'р'],
+  KeyI: ['i', 'I', 'I', 'ш', 'Ш', 'Ш', 'i', 'ш'],
+  KeyJ: ['j', 'J', 'J', 'о', 'О', 'О', 'j', 'о'],
+  KeyK: ['k', 'K', 'K', 'л', 'Л', 'Л', 'k', 'л'],
+  KeyL: ['l', 'L', 'L', 'д', 'Д', 'Д', 'l', 'д'],
+  KeyM: ['m', 'M', 'M', 'ь', 'Ь', 'Ь', 'm', 'ь'],
+  KeyN: ['n', 'N', 'N', 'т', 'Т', 'Т', 'n', 'т'],
+  KeyO: ['o', 'O', 'O', 'щ', 'Щ', 'Щ', 'o', 'щ'],
+  KeyP: ['p', 'P', 'P', 'з', 'З', 'З', 'p', 'з'],
+  KeyQ: ['q', 'Q', 'Q', 'й', 'Й', 'Й', 'q', 'й'],
+  KeyR: ['r', 'R', 'R', 'к', 'К', 'К', 'r', 'к'],
+  KeyS: ['s', 'S', 'S', 'ы', 'Ы', 'Ы', 's', 'ы'],
+  KeyT: ['t', 'T', 'T', 'е', 'Е', 'Е', 't', 'е'],
+  KeyU: ['u', 'U', 'U', 'г', 'Г', 'Г', 'u', 'г'],
+  KeyV: ['v', 'V', 'V', 'м', 'М', 'М', 'v', 'м'],
+  KeyW: ['w', 'W', 'W', 'ц', 'Ц', 'Ц', 'w', 'ц'],
+  KeyX: ['x', 'X', 'X', 'ч', 'Ч', 'Ч', 'x', 'ч'],
+  KeyY: ['y', 'Y', 'Y', 'н', 'Н', 'Н', 'y', 'н'],
+  KeyZ: ['z', 'Z', 'Z', 'я', 'Я', 'Я', 'z', 'я'],
+  BracketLeft: ['[', '[', '{', 'х', 'Х', 'Х', '{', 'х'],
+  BracketRight: [']', ']', '}', 'ъ', 'Ъ', 'Ъ', '}', 'ъ'],
+  Backslash: ['\\', '\\', '|', '\\', '\\', '/', '|', '/'],
+  Del: ['Del', 'Del', 'Del', 'Del', 'Del', 'Del', 'Del', 'Del'],
+  Comma: [',', ',', '<', 'б', 'Б', 'Б', '<', 'б'],
+  Period: ['.', '.', '>', 'ю', 'Ю', 'Ю', '>', 'ю'],
+  Slash: ['/', '/', '?', '.', '.', ',', '?', ','],
+  Backspace: ['Backspace', 'Backspace', 'Backspace', 'Backspace', 'Backspace', 'Backspace', 'Backspace', 'Backspace'],
+  Enter: ['Enter', 'Enter', 'Enter', 'Enter', 'Enter', 'Enter', 'Enter', 'Enter'],
+  Caps: ['Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock', 'Caps Lock'],
+  ShiftLeft: ['Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift'],
+  ShiftRight: ['Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift', 'Shift'],
+  CtrlLeft: ['Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl'],
+  CtrlRight: ['Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl'],
+  Win: ['Win', 'Win', 'Win', 'Win', 'Win', 'Win', 'Win', 'Win'],
+  AltLeft: ['Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt'],
+  AltRight: ['Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt', 'Alt'],
+  Space: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  ArrowUp: ['▲', '▲', '▲', '▲', '▲', '▲', '▲', '▲'],
+  ArrowRight: ['►', '►', '►', '►', '►', '►', '►', '►'],
+  ArrowDown: ['▼', '▼', '▼', '▼', '▼', '▼', '▼', '▼'],
+  ArrowLeft: ['◄', '◄', '◄', '◄', '◄', '◄', '◄', '◄'],
+  Semicolon: [';', ';', ':', 'ж', 'Ж', 'Ж', ':', 'ж'],
+  Quote: ['\'', '\'', '"', 'э', 'Э', 'Э', '"', 'э']
 };
 
 const KEYBOARD_LAYOUT = [
@@ -121,6 +121,8 @@ function updateKeys() {
 
     if (shift && caps && lang === 'eng') {
       text = keyData[6];
+    } else if (shift && caps && lang === 'rus') {
+      text = keyData[7];
     } else if (shift) {
       if (lang === 'eng') {
         text = keyData[2];
@@ -163,6 +165,9 @@ KEYBOARD_LAYOUT.forEach(row => {
           updateKeys();
           keyElement.classList.add('key_pressed');
           break;
+        case 'CtrlLeft':
+          keyElement.classList.add('key_pressed');
+          break;
       }
     });
     
@@ -171,6 +176,12 @@ KEYBOARD_LAYOUT.forEach(row => {
         case 'ShiftLeft':
         case 'ShiftRight':
           shift = false;
+          updateKeys();
+          keyElement.classList.remove('key_pressed');
+          break;
+        case 'CtrlLeft':
+          lang = lang === 'eng' ? 'rus' : 'eng';
+          localStorage.setItem('lang', lang);
           updateKeys();
           keyElement.classList.remove('key_pressed');
           break;
@@ -200,6 +211,16 @@ KEYBOARD_LAYOUT.forEach(row => {
         case 'ShiftLeft':
           break;
         case 'ShiftRight':
+          break;
+        case 'CtrlLeft':
+          break;
+        case 'Win':
+          break;
+        case 'CtrlRight':
+          break;
+        case 'AltLeft':
+          break;
+        case 'AltRight':
           break;
         default:
           inputField.value += getKeyChar(keyCode);
