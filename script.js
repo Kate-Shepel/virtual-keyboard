@@ -326,19 +326,3 @@ function handleKeyUp(event) {
 
 document.addEventListener('keydown', handleKeyDown);
 document.addEventListener('keyup', handleKeyUp);
-
-/*inputField.addEventListener("keydown", function (event) {
-  switch (event.key) {
-    case "Enter":
-      event.preventDefault();
-      // Ваш код для обработки нажатия клавиши Enter
-      break;
-    case "Tab":
-      event.preventDefault();
-      // Ваш код для обработки нажатия клавиши Tab
-      break;
-    default:
-      // Ваш код для обработки остальных клавиш, если необходимо
-      break;
-  }
-});*/
