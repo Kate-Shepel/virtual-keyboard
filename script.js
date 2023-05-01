@@ -20,7 +20,6 @@ let caps = false;
 let shift = false;
 
 const KEYS = {
-  // keyCode: ['En', 'En+Caps', 'En+Sft', 'Ru', 'Ru+Caps', 'Ru+Sft', 'En+Caps+Sft', 'Ru+Caps+Sft' ]
   Backquote: ['`', '`', '~', 'ё', 'Ё', 'Ё', '~', 'ё'],
   Digit1: ['1', '1', '!', '1', '1', '!', '!', '!'],
   Digit2: ['2', '2', '@', '2', '2', '"', '@', '"'],
@@ -258,17 +257,12 @@ KEYBOARD_LAYOUT.forEach(row => {
 
 updateKeys();
 
-// For real keyboard
 document.addEventListener('keydown', (event) => {
   const key = document.querySelector(`.key[data-key="${event.code}"]`);
   if (key) {
     if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
       shift = true;
       updateKeys();
-    // } else if (event.code === 'CapsLock') {
-    //   caps = !caps;
-    //   updateKeys();
-    //   key.classList.toggle('key_pressed');
     } else if (event.code === 'ControlLeft') {
       lang = lang === 'eng' ? 'rus' : 'eng';
       localStorage.setItem('lang', lang);
@@ -291,7 +285,6 @@ document.addEventListener('keyup', (event) => {
   }
 });
 
-// separately for CapsLock and Del cases
 function handleKeyDown(event) {
   const keyCode = event.code;
   const keyElement = document.querySelector(`.key[data-key="${keyCode}"]`);
