@@ -6,6 +6,10 @@ const introInfo = document.createElement('p');
 introInfo.innerHTML = 'The Virtual Keyboard was created in Windows operating system. <br> Please use LeftCtrl for language switch.';
 introInfo.classList.add('intro-info');
 document.body.append(introInfo);
+const additionalInfo = document.createElement('p');
+additionalInfo.innerHTML = 'Please make sure that your desktop language is the same as the chosen in virtual keyboard in case of pressing keys combinations <b>simultaniously</b> on your desktop and virtual keyboards.';
+additionalInfo.classList.add('additional-info');
+document.body.append(additionalInfo);
 const inputField = document.createElement('textarea');
 inputField.id = 'inputField';
 inputField.classList.add('input-field');
@@ -99,13 +103,15 @@ function getKeyChar(keyCode) {
   if (!keyData) return '';
 
   if (lang === 'eng') {
+    if (caps && shift) return keyData[6];
     if (caps && !shift) return keyData[1];
     if (!caps && shift) return keyData[2];
-    if (caps && shift) return keyData[0];
+    if (!caps && !shift) return keyData[0];
   } else if (lang === 'rus') {
+    if (caps && shift) return keyData[7];
     if (caps && !shift) return keyData[4];
     if (!caps && shift) return keyData[5];
-    if (caps && shift) return keyData[3];
+    if (!caps && !shift) return keyData[3];
   }
 
   return keyData[0];
