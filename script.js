@@ -3,13 +3,9 @@ heading.innerHTML = 'Virtual Keyboard';
 heading.classList.add('heading');
 document.body.append(heading);
 const introInfo = document.createElement('p');
-introInfo.innerHTML = 'The Virtual Keyboard was created in Windows operating system. <br> Please use LeftCtrl for language switch.';
+introInfo.innerHTML = 'The Virtual Keyboard was created in Windows operating system. <br> Please use ShiftLeft + AltLeft for language switch.';
 introInfo.classList.add('intro-info');
 document.body.append(introInfo);
-const additionalInfo = document.createElement('p');
-additionalInfo.innerHTML = 'Please make sure that your desktop language is the same as the chosen in virtual keyboard in case of pressing keys combinations <b>simultaniously</b> on your desktop and virtual keyboards.';
-additionalInfo.classList.add('additional-info');
-document.body.append(additionalInfo);
 const inputField = document.createElement('textarea');
 inputField.id = 'inputField';
 inputField.classList.add('input-field');
@@ -22,6 +18,7 @@ document.body.appendChild(keyboard);
 let lang = localStorage.getItem('lang') || 'eng';
 let caps = false;
 let shift = false;
+let alt = false;
 
 const KEYS = {
   Backquote: ['`', '`', '~', 'ё', 'Ё', 'Ё', '~', 'ё'],
@@ -186,7 +183,8 @@ KEYBOARD_LAYOUT.forEach(row => {
           updateKeys();
           keyElement.classList.add('key_pressed');
           break;
-        case 'ControlLeft':
+        case 'AltLeft':
+          alt = true;
           keyElement.classList.add('key_pressed');
           break;
         default:
@@ -202,10 +200,8 @@ KEYBOARD_LAYOUT.forEach(row => {
           updateKeys();
           keyElement.classList.remove('key_pressed');
           break;
-        case 'ControlLeft':
-          lang = lang === 'eng' ? 'rus' : 'eng';
-          localStorage.setItem('lang', lang);
-          updateKeys();
+        case 'AltLeft':
+          alt = false;
           keyElement.classList.remove('key_pressed');
           break;
         default:
@@ -237,6 +233,11 @@ KEYBOARD_LAYOUT.forEach(row => {
           deleteCharacterAfterCursor();
           break;
         case 'ShiftLeft':
+          if (alt) {
+            lang = lang === 'eng' ? 'rus' : 'eng';
+            localStorage.setItem('lang', lang);
+            updateKeys();
+          }
           break;
         case 'ShiftRight':
           break;
@@ -268,10 +269,6 @@ document.addEventListener('keydown', (event) => {
   if (key) {
     if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
       shift = true;
-      updateKeys();
-    } else if (event.code === 'ControlLeft') {
-      lang = lang === 'eng' ? 'rus' : 'eng';
-      localStorage.setItem('lang', lang);
       updateKeys();
     }
     key.classList.add('key_pressed');
@@ -326,3 +323,18 @@ function handleKeyUp(event) {
 
 document.addEventListener('keydown', handleKeyDown);
 document.addEventListener('keyup', handleKeyUp);
+
+function handleKeyboardEvent(event) {
+  if (event.code === 'ShiftLeft' || event.code === 'AltLeft') {
+    if (event.type === 'keydown') {
+      if (event.shiftKey && event.altKey) {
+        lang = lang === 'eng' ? 'rus' : 'eng';
+        localStorage.setItem('lang', lang);
+        updateKeys();
+      }
+    }
+  }
+}
+
+document.addEventListener('keydown', handleKeyboardEvent);
+document.addEventListener('keyup', handleKeyboardEvent);
