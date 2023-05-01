@@ -145,6 +145,24 @@ function updateKeys() {
   });
 }
 
+function deleteCharacterAfterCursor() {
+  const textArea = document.querySelector('#inputField');
+  const start = textArea.selectionStart;
+  const end = textArea.selectionEnd;
+
+  if (start === end) {
+    const newValue = textArea.value.slice(0, start) + textArea.value.slice(start + 1);
+    textArea.value = newValue;
+    textArea.selectionStart = start;
+    textArea.selectionEnd = start;
+  } else {
+    const newValue = textArea.value.slice(0, start) + textArea.value.slice(end);
+    textArea.value = newValue;
+    textArea.selectionStart = start;
+    textArea.selectionEnd = start;
+  }
+}
+
 KEYBOARD_LAYOUT.forEach(row => {
   const rowElement = document.createElement('div');
   rowElement.classList.add('row');
@@ -210,6 +228,9 @@ KEYBOARD_LAYOUT.forEach(row => {
           if (caps) keyElement.classList.add('key_pressed');
           else keyElement.classList.remove('key_pressed');
           break;
+        case 'Delete':
+          deleteCharacterAfterCursor();
+          break;
         case 'ShiftLeft':
           break;
         case 'ShiftRight':
@@ -270,7 +291,7 @@ document.addEventListener('keyup', (event) => {
   }
 });
 
-// separately for CapsLock case
+// separately for CapsLock and Del cases
 function handleKeyDown(event) {
   const keyCode = event.code;
   const keyElement = document.querySelector(`.key[data-key="${keyCode}"]`);
@@ -285,6 +306,9 @@ function handleKeyDown(event) {
         } else {
           keyElement.classList.remove('key_pressed');
         }
+        break;
+      case 'Delete':
+        deleteCharacterAfterCursor();
         break;
       default:
         keyElement.classList.add('key_pressed');
